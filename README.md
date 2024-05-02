@@ -1,2 +1,2 @@
-# ForMe
-ecpcq temp
+# Competitve Programming Templates
+
