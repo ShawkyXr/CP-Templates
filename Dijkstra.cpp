@@ -12,7 +12,7 @@ template <typename T=int> struct Dijkstra{
     vector<T> dist;
     vector<T> parent;
 
-    Dijkstra(int n): adj(n), dist(n, oo), parent(n, -1) {}
+    Dijkstra(int n): adj(n), dist(n, LLONG_MAX), parent(n, -1) {}
 
     void AddE(T u, T v, T w, bool directed = false){
         adj[u].emplace_back(edge(u, v, w));
@@ -20,7 +20,7 @@ template <typename T=int> struct Dijkstra{
     }
 
     void FindDist(T src,T target = -1){
-        dist.assign(sz(adj), oo);
+        dist.assign(sz(adj), LLONG_MAX);
         parent.assign(sz(adj), -1);
         // create pq with edges sorted by lowest weight
         priority_queue<edge> pq;
