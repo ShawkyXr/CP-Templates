@@ -19,7 +19,7 @@ template <typename T=int> struct Dijkstra{
         if (!directed) adj[v].emplace_back(edge(v, u, w));
     }
 
-    void FindDist(T src,T target = -1){
+    void get_dist(T src,T target = -1){
         dist.assign(sz(adj), LLONG_MAX);
         parent.assign(sz(adj), -1);
         // create pq with edges sorted by lowest weight
