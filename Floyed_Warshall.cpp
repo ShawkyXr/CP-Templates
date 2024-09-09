@@ -18,6 +18,7 @@ Template <typename T> struct Floyed{
                         dist[i][j] = dist[i][k] + dist[k][j];
                         parent[i][j] = parent[k][j];
                     }
+                    if (i==j) dist[i][j] = 0;
                 }
             }
         }
