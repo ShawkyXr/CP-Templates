@@ -1,22 +1,26 @@
 template <typename T=int> struct Bellman{
-    
+
     struct Edge{
         int from, to;
         T cost;
         Edge(int from, int to, T cost) : from(from), to(to), cost(cost) {}
     };
 
-    Bellman(int n) : dist(n, oo), parent(n, -1) {}
 
+    int n;
+    bool inv = false;
     vector<Edge> edges;
     vector<T> dist;
     vector<int> parent;
 
-    void addEdge(int from, int to, T cost){
-        edges.push_back(Edge(from, to, cost));
+    Bellman(int n,bool inv) : n(n), inv(inv) ,dist(n, oo), parent(n, -1) {}
+
+    void addEdge(int from, int to, T cost, bool inv = false){
+        if (inv) edges.emplace_back(from, to, -1LL*cost);
+        else edges.emplace_back(from, to, cost);
     }
 
-    bool bellmanFord(int src){
+    ll bellmanFord(int src){
         dist[src] = 0;
         for(int i = 0; i < sz(edges) - 1; i++){
             for(auto &e : edges){
@@ -26,13 +30,18 @@ template <typename T=int> struct Bellman{
                 }
             }
         }
+        if (inv) return dist[n]*-1LL;
+        return dist[n];
+    }
 
-        for(auto &e : edges){
-            if(dist[e.from] + e.cost < dist[e.to]){
-                return false;
+    bool NegCycle(){
+         for (int i=0 ; i< n-1 ; i++){
+            for(auto &e : edges){
+                if(dist[e.from] + e.cost < dist[e.to]){
+                    return false; // Negative cycle 
+                }
             }
         }
-
         return true;
     }
 
