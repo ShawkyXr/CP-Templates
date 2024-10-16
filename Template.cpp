@@ -1,7 +1,18 @@
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Shawky_XR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-#include<bits/stdc++.h>
-#include<stdio.h>
+#include <iostream>
+#include <climits>
+#include <string>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <set>
+#include <cmath>
+#include <deque>
+#include <numeric>
+#include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -28,16 +39,16 @@ typedef unsigned long long ull;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef vector<long long> vll;
-const ll oo = 1LL << 60;
+const ll oo = 0x3f3f3f3f3f3f3f3f;
 constexpr int Mod =  1e9 + 7;
 
 
 void IO(){
-   #ifndef ONLINE_JUDGE
-       freopen("input.txt", "r", stdin), freopen("output.txt", "w", stdout); 
-   #endif
+//    #ifndef ONLINE_JUDGE
+//        freopen("input.txt", "r", stdin), freopen("output.txt", "w", stdout); 
+//    #endif
    ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-   cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC << " Secs" << "\n";
+    cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC << " Sec; " << nl;
 }
 
 
@@ -52,7 +63,7 @@ int main(){
     // cin >> testcase;
     for (int t=1 ; t<=testcase ; t++) {
         // cout << "Case #" << testcase << ": ";
-        solv();
+        solve();
     }
     return 0;
 }
