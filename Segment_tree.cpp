@@ -1,4 +1,4 @@
-template <typename T> struct Segment_tree{
+template <typename T, bool base> struct Segment_tree{
 
 private:
 
@@ -12,6 +12,7 @@ private:
             val = a;
             return *this;
         }
+        
 
     };
 
@@ -77,16 +78,17 @@ public:
     }
 
     void update(int i, T val){
-        update(i, val, 0, 0, size - 1);
+        if (base) update(i-1, val, 0, 0, size - 1);
+        else update(i, val, 0, 0, size - 1);
     }
 
-    T query(int l, int r, int base = 1){
+    T query(int l, int r){
         if (base) return query(l-1 , r-1, 0, 0, size - 1).val;
         return query(l, r, 0, 0, size - 1).val;
     }
 
     Node merge(Node a, Node b){
-        return a.val + b.val;
+        return a.val <= b.val ? a : b;
     }
 
     T get(int i){
