@@ -1,5 +1,6 @@
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Shawky_XR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
+// #include <bits/stdc++.h> 
 #include <iostream>
 #include <climits>
 #include <string>
@@ -13,6 +14,8 @@
 #include <cstring>
 #include <numeric>
 #include <algorithm>
+#include <iomanip>
+#include <bitset>
 
 using namespace std;
 
@@ -50,6 +53,7 @@ void IO(){
    ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
     cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC << " Sec; " << nl;
 }
+
 
 
 void solve(){
