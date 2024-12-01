@@ -1,42 +1,27 @@
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Shawky_XR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-// #include <bits/stdc++.h> 
 #include <iostream>
-#include <climits>
-#include <string>
 #include <vector>
-#include <queue>
-#include <map>
-#include <set>
-#include <deque>
-#include <stack>
 #include <cmath>
 #include <cstring>
-#include <numeric>
-#include <algorithm>
-#include <iomanip>
-#include <bitset>
 
 using namespace std;
 
-#define nl "\n"
-#define cin(vec) for(auto& i : vec) cin >> i
-#define cin_2d(vec, n, m) for(int i = 0; i < n; i++) for(int j = 0; j < m && cin >> vec[i][j]; j++);
 #define cout(vec) for(auto& i : vec) cout << i << " "; cout << "\n";
-#define cout_2d(vec, n, m) for(int i = 0; i < n; i++, cout << "\n") for(int j = 0; j < m && cout << vec[i][j] << " "; j++);
-#define sz(x) int(x.size())
-#define fix_mod(a,b)  ((a % b + b) % b)
 #define add_mod(a, b, m) (((a   % m) + (b % m)) % m)
 #define sub_mod(a, b, m) (((a % m) - (b % m) + m) % m)
 #define mul_mod(a, b, m) (((a % m) * (b % m)) % m)
+#define cin(vec) for(auto& i : vec) cin >> i
+#define fix_mod(a,b)  ((a % b + b) % b)
+#define sz(x) int(x.size())
 #define fori(i, n) for (int i = 0; i < n; i++)
 #define forll(i,n) for (ll i = 0; i < n; i++)
 #define forab(i, a, b) for (int i = a; i <= b; i++)
 #define fixed(n) cout << fixed << setprecision(n)
 #define all(vec) vec.begin(), vec.end()
 #define rall(vec) vec.rbegin(), vec.rend()
-#define mod 1000000007
 #define Pi 3.141592653589793
+#define nl "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> pii;
@@ -74,7 +59,7 @@ private:
 
     int size;
     vector<Node> tree;
-    Node ret;
+    Node ret; // Default value
 
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * i + 2; }
@@ -83,7 +68,7 @@ private:
     void build(vector<T> &v, int x, int lx, int rx){
 
         if (lx == rx){
-            if (lx < sz(v)) tree[x] = v[lx];
+            if (lx < sz(v)) tree[x] = v[lx]; // 0 based indexing tree
             return;
         }
 
@@ -126,11 +111,11 @@ public:
 
         ret = Default;
         size = 1;
-        while (size < n) size *= 2;
+        while (size < n) size *= 2; 
 
         tree.assign(2 * size, ret);
 
-        build(v, 0, 0, size - 1);
+        build(v, 0, 0, size - 1); // 0 based indexing tree
     }
 
     void update(int i, T val){
@@ -144,10 +129,11 @@ public:
     }
 
     Node merge(Node a, Node b){
-        return a.val <= b.val ? a : b;
+        return a.val + b.val; // Change this to operation you want to perform
     }
 
     T get(int i){
+        if (base) return query(i-1, i-1);
         return query(i, i);
     }
 
