@@ -133,7 +133,6 @@ public:
     }
 
     T get(int i){
-        if (base) return query(i-1, i-1);
         return query(i, i);
     }
 
