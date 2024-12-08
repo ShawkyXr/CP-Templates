@@ -76,6 +76,8 @@ private:
 
         build(v, left(x), lx, m);
         build(v, right(x), m + 1, rx);
+
+        tree[x] = merge(tree[left(x)], tree[right(x)]);
     }
 
     void propagate(int x, int lx, int rx){
