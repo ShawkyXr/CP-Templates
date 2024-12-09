@@ -49,7 +49,8 @@ private:
     struct Node{
             
             T val, lazy;
-    
+            bool isLazy = false;
+
             Node(T value = 0) : val(value), lazy(0) {}
     
             Node operator = (const T &a){
@@ -81,12 +82,12 @@ private:
     }
 
     void propagate(int x, int lx, int rx){
-        if (tree[x].lazy == 0) return;
+        if (!tree[x].isLazy) return;
         if (lx != rx){
             tree[left(x)].lazy += tree[x].lazy;
             tree[right(x)].lazy += tree[x].lazy;
         }
-        tree[x].val += tree[x].lazy;
+        tree[x].val += tree[x].lazy * (rx - lx + 1);
         tree[x].lazy = 0;
     }
 
@@ -95,6 +96,7 @@ private:
         if (lx > r || rx < l) return;
         if (lx >= l && rx <= r){
             tree[x].lazy += val;
+            tree[x].isLazy = true;
             propagate(x, lx, rx);
             return;
         }
