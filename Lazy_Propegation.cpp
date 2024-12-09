@@ -84,11 +84,13 @@ private:
     void propagate(int x, int lx, int rx){
         if (!tree[x].isLazy) return;
         if (lx != rx){
-            tree[left(x)].lazy += tree[x].lazy;
-            tree[right(x)].lazy += tree[x].lazy;
+            tree[left(x)].lazy = merge_lazy(tree[left(x)].lazy, tree[x].lazy);
+            tree[right(x)].lazy = merge_lazy(tree[right(x)].lazy, tree[x].lazy);
+            tree[left(x)].isLazy = tree[right(x)].isLazy = true;
         }
-        tree[x].val += tree[x].lazy * (rx - lx + 1);
+        tree[x].val = merge(tree[x].val, tree[x].lazy);
         tree[x].lazy = 0;
+        tree[x].isLazy = false;
     }
 
     void update(int l,int r ,T val, int x,int lx, int rx){
@@ -156,6 +158,10 @@ public:
 
     Node merge(Node a, Node b){
         return a.val + b.val; // Change this to operation you want to perform
+    }
+
+    Node merge_lazy(Node a, Node b){
+        return a.val * b.val;
     }
 
     T get(int i){
