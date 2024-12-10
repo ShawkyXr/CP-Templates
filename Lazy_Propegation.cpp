@@ -88,7 +88,7 @@ private:
             tree[right(x)].lazy = merge_lazy(tree[right(x)].lazy, tree[x].lazy);
             tree[left(x)].isLazy = tree[right(x)].isLazy = true;
         }
-        tree[x].val = merge(tree[x].val, tree[x].lazy);
+        tree[x].val = merge_lazy(tree[x].val, tree[x].lazy);
         tree[x].lazy = 0;
         tree[x].isLazy = false;
     }
@@ -97,7 +97,7 @@ private:
         propagate(x, lx, rx);
         if (lx > r || rx < l) return;
         if (lx >= l && rx <= r){
-            tree[x].lazy += val;
+            tree[x].lazy = merge_lazy(tree[x].lazy, val);
             tree[x].isLazy = true;
             propagate(x, lx, rx);
             return;
@@ -160,8 +160,8 @@ public:
         return a.val + b.val; // Change this to operation you want to perform
     }
 
-    Node merge_lazy(Node a, Node b){
-        return a.val * b.val;
+    T merge_lazy(T a, T b){
+        return a + b;
     }
 
     T get(int i){
