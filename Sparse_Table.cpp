@@ -43,7 +43,7 @@ void IO(){
 }
 
 
-template <typename T, bool base> struct Sparce_Table{
+template <typename T, bool base> struct Sparse_Table{
 
 private:
 
@@ -51,7 +51,7 @@ private:
     int Log;
     vector<vector<T>> table;
 
-    void build(vector<int> &v){
+    void build(vector<T> &v){
         size = sz(v);
         Log = 32 - __builtin_clz(size);
 
@@ -72,7 +72,7 @@ private:
 
 public:
 
-    Sparce_Table(int n, vector<int> &v){
+    Sparse_Table(int n, vector<T> &v){
         build(v);
     }
 
