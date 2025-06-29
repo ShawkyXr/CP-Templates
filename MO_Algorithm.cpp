@@ -60,10 +60,10 @@ template <typename T> struct Mo{
     vector <Query> queries;
     vector <T> vec,ans;
 
-    Mo(int n, vector <T> vec,int q){
+    Mo(int n, vector <T> arr,int q){
         N = n;
         Sq = sqrt(N)+2;
-        vec = vec;
+        vec = arr;
         Q = q;
         ans.resize(Q);
     }
