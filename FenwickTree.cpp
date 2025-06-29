@@ -36,10 +36,7 @@ template <typename T > struct FenwickTree{
         n = vec.size();
         tree.assign(n + 1, 0);
         for (int i = 0; i < n; i++) {
-            tree[i] += vec[i];
-            int nxt = i | (i + 1);
-            if (nxt < n)
-                tree[nxt] += tree[i];
+            update(i, vec[i]);
         }
     }
 
@@ -75,47 +72,45 @@ template <typename T > struct FenwickTree{
 
 
 
-
 // range update and point query (BIT) 0-based
-template <typename T> struct FenwickTree2{
-    vector <T> tree;
+template <typename T> struct FenwickTree2 {
+    vector<T> tree;
     int n;
 
-    FenwickTree2(vector <T> &vec){
+    FenwickTree2(vector<T> &vec) {
         n = vec.size();
         tree.assign(n, 0);
-        for (int i = 0; i < n ; i++){
-           update(i, vec[i]);
+        for (int i = 0; i < n; i++) {
+            range_update(i, i, vec[i]);
         }
     }
 
-    FenwickTree2(int n){
+    FenwickTree2(int n) {
         this->n = n;
         tree.assign(n, 0);
     }
 
-
-    void update(int idx, T val){
-        for (int i = idx ; i < n; i |= (i+1)){
+    void update(int idx, T val) {
+        for (int i = idx; i < n; i |= (i + 1)) {
             tree[i] += val;
         }
     }
 
-    void range_update(int l, int r, T val){ // range update from l to r
+    void range_update(int l, int r, T val) { // range update from l to r
         update(l, val);
         if (r + 1 < n)
             update(r + 1, -val);
     }
 
-    T query(int idx){ // value at idx
-        T res {};
-        for (; idx >= 0; idx = (idx & (idx + 1)) - 1){
+    T query(int idx) { // value at idx
+        T res{};
+        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
             res += tree[idx];
         }
         return res;
     }
-
 };
+
 
 void solve(){
     
