@@ -117,6 +117,7 @@ void solve(){
     for (int i=0 ; i<q ; i++){
         int l,r;
         cin >> l >> r;
+        l--,r--;
         mo.Add_Query(l,r,i);
     }
 
