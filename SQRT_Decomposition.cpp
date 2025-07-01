@@ -40,12 +40,12 @@ void IO(){
 
 template <typename T> struct Sqrt_Decom{
 
-    int n,q,Sq;
+    int n,Sq;
     vector <T> vec, blk;
     vector <vector <T>> blocks;
     
-    Sqrt_Decom (int N,vector <T> arr, int Q){
-        n = N, q = Q , Sq = sqrt(n)+1;
+    Sqrt_Decom (int N,vector <T> arr){
+        n = N, Sq = sqrt(n)+1;
         vec = arr;
         blk.assign(Sq);
         blocks.assign(Sq,vector <T> ());
@@ -74,9 +74,9 @@ template <typename T> struct Sqrt_Decom{
     T query(int l, int r){
         T ret = 0;
 
-        while(l < r){
+        while(l <= r){
 
-            if (l%Sq==0 && l+Sq == r){
+            if (l%Sq==0 && l+Sq-1 <= r){
                 ret += blk[l/Sq];
                 l += Sq;
             }else{
@@ -87,7 +87,7 @@ template <typename T> struct Sqrt_Decom{
 
         return ret;
     }
-    
+
 
 };
 
