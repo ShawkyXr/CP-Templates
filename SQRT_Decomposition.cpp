@@ -91,6 +91,8 @@ template <typename T> struct Sqrt_Decom{
 
 };
 
+// Sqrt Decomposition
+
 
 void solve(){
 

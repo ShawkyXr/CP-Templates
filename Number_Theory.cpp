@@ -27,6 +27,11 @@ typedef long long ll;
 // -------------------------------------------------- Number Theory -------------------------------------------------- //
 
 
+// Logarithm for any base
+double LOG(double val, double base){
+    return log2(val) / log2(base);
+}
+
 // Greatest Common Divisor (GCD) of two numbers in O(log(min(a,b))) using Euclid’s algorithm
 ll GCD(ll n ,ll m){ 
     if (!m) return n;

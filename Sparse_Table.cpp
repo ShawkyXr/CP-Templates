@@ -82,17 +82,7 @@ public:
         return merge(table[j][l], table[j][r - (1 << j) + 1]);
     }
 
-    T query2(int l, int r){ // Sum, Min, Max, GCD, LCM in O(logn) -> non overlapping
-        if (base) l--, r--;
-        T ans = 0;
-        for (int i=Log ; i>=0 ; i--){
-            if ((1 << i) <= r - l + 1){
-                ans = merge(ans, table[i][l]);
-                l += (1 << i);
-            }
-        }
-        return ans;
-    }
+
 };
 
 

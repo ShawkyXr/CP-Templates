@@ -42,6 +42,7 @@ void IO(){
     cerr << "Time Taken: " << (float)clock() / CLOCKS_PER_SEC << " Sec; " << nl;
 }
 
+// Trie 
 struct Trie {
     struct Node {
         vector<Node*> child;
